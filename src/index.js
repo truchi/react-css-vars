@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import css from './react-css-vars'
+import './index.css'
 
-// let WrappedComponent = class extends Component {
-//   constructor(props) {
-//     super(props)
-//   }
-//
+// let Wrapped = class extends Component {
 //   render() {
 //     return <h1>{this.props.children}</h1>
 //   }
 // }
 
-let WrappedComponent = {
+let Wrapped = {
   tag: 'h1'
-, className: 'className megalol'
+, className: 'Title'
+, displayName: 'Title'
 }
 
-// let WrappedComponent = 'h1'
+// let Wrapped = 'h1'
 
-let El = css(WrappedComponent, (props, $) => {
+let El = css(Wrapped, (props, $) => {
   return {
     '--h1-color': props.color
   , h1Aaa11Bbb222Ccccc33: props.color
@@ -33,7 +31,7 @@ let El = css(WrappedComponent, (props, $) => {
 class App extends Component {
   render() {
     return (
-      <El></El>
+      <El>React CSS Vars</El>
     )
   }
 }
