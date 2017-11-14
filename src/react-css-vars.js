@@ -17,10 +17,10 @@ export default (WrappedComponent, updater) => {
     }
 
     postRender() {
-      let $ = findDOMNode(this)
+      const $ = findDOMNode(this)
       if ( !$ ) return
 
-      let _$ = {
+      const _$ = {
         classes: {
           add     : $.classList.add.bind($.classList)
         , remove  : $.classList.remove.bind($.classList)
@@ -38,8 +38,8 @@ export default (WrappedComponent, updater) => {
         }
       }
 
-      let vars = get(updater, this.props, _$)
-      for (let v in vars) {
+      const vars = get(updater, this.props, _$)
+      for (const v in vars) {
         if ( v === '$' ) {
           get(vars[v], this.props, _$)
         } else {
