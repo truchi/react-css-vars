@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
-import { name, get, create } from './utils'
+import { name, get, create, getDisplayName } from './utils'
 
 export default (WrappedComponent, updater) => {
   WrappedComponent = typeof WrappedComponent === 'object'
@@ -53,8 +53,7 @@ export default (WrappedComponent, updater) => {
     }
   }
 
-  // TODO displayName
-  component.displayName = 'LOL2'
+  component.displayName = `RCV(${getDisplayName(WrappedComponent)})`
 
   return component
 }

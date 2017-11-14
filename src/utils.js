@@ -20,10 +20,22 @@ export const get = (obj, ...args) => typeof obj === 'function'
   ? obj(...args)
   : obj
 
+export const getDisplayName = (WrappedComponent) =>
+  WrappedComponent.displayName || WrappedComponent.name || 'Component'
+
 export const create = (arg) => {
-  let { tag, className } = typeof arg === 'string'
-    ? { tag: arg    , className: ''            }
-    : { tag: arg.tag, className: arg.className }
+  let { tag, className, displayName } =
+    typeof arg === 'string'
+      ? {
+        tag        : arg
+      , className  : ''
+      , displayName: 'Wrapped'
+      }
+      : {
+        tag        : arg.tag         || 'div'
+      , className  : arg.className   || ''
+      , displayName: arg.displayName || 'Wrapped'
+      }
 
   let component = class extends Component {
     render() {
@@ -33,8 +45,7 @@ export const create = (arg) => {
     }
   }
 
-  // TODO displayName
-  component.displayName = 'LOL1'
+  component.displayName = displayName
 
   return component
 }
