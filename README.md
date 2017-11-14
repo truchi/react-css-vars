@@ -87,5 +87,4 @@ class App extends Component {
 
 - [react-css-variables](https://github.com/jide/react-css-variables): Another way to do it
 - [Yet another way](https://codepen.io/Mannaio/pen/eWzyoK) on CodePen
-
 - [CSS properties browser support](https://caniuse.com/#feat=css-variables) from CanIUse
