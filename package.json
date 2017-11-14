@@ -1,6 +1,8 @@
 {
   "name": "react-css-vars",
   "description": "--Element-foo: (props) => fooify(props.bar)",
+  "version": "1.0.0",
+  "main": "build/react-css-vars.js",
   "scripts": {
     "build": "babel lib -d build"
   },
