@@ -1,4 +1,10 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 import React, { Component } from 'react';
+
+export const isNull = o => o === null;
+export const isObject = o => !isNull(o) && typeof o === 'object';
+export const isFunction = o => typeof o === 'function';
 
 export const name = str => {
   if (str.startsWith('--')) return str;
@@ -16,7 +22,7 @@ export const name = str => {
   return `--${str}`;
 };
 
-export const get = (obj, ...args) => typeof obj === 'function' ? obj(...args) : obj;
+export const get = (obj, ...args) => isFunction(obj) ? obj(...args) : obj;
 
 export const getDisplayName = WrappedComponent => WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
@@ -28,7 +34,7 @@ export const create = arg => {
   } : {
     tag: arg.tag || 'div',
     className: arg.className || '',
-    displayName: arg.displayName || 'Wrapped'
+    displayName: arg.displayName || arg.className || 'Wrapped'
   };
 
   let component = class extends Component {
@@ -37,7 +43,7 @@ export const create = arg => {
 
       return React.createElement(
         Tag,
-        { className: className },
+        _extends({ className: className }, this.props),
         this.props.children
       );
     }

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
-import { name, get, create, getDisplayName } from './utils';
+import { name, get, create, getDisplayName, isObject, isFunction } from './utils';
 
 export default ((WrappedComponent, updater) => {
-  WrappedComponent = typeof WrappedComponent === 'object' ? create(WrappedComponent) : WrappedComponent;
+  WrappedComponent = isObject(WrappedComponent) ? create(WrappedComponent) : WrappedComponent;
+
+  if (!isObject(updater) && !isFunction(updater)) return WrappedComponent;
 
   let component = class extends Component {
     componentDidMount() {
@@ -37,6 +39,8 @@ export default ((WrappedComponent, updater) => {
       };
 
       const vars = get(updater, this.props, _$);
+      if (!isObject(vars)) return;
+
       for (const v in vars) {
         if (v === '$') {
           get(vars[v], this.props, _$);
