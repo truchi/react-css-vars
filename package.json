@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "main": "build/react-css-vars.js",
   "scripts": {
-    "build": "babel lib -d build"
+    "start": "babel lib -wsd build",
+    "build": "babel --minified lib -d build"
   },
   "peerDependencies": {
     "react": "16.x",
