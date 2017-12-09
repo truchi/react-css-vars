@@ -2,10 +2,10 @@
   "name": "react-css-vars",
   "description": "--Element-foo: (props) => fooify(props.bar)",
   "version": "1.0.0",
-  "main": "build/react-css-vars.js",
+  "main": "dist/react-css-vars.js",
   "scripts": {
     "start": "babel lib -wsd build",
-    "build": "babel --minified lib -d build"
+    "dist": "babel --minified lib -d dist"
   },
   "peerDependencies": {
     "react": "16.x",
