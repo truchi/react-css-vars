@@ -8,8 +8,7 @@
     "dist": "babel --minified lib -d dist"
   },
   "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
+    "react": "16.x"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
